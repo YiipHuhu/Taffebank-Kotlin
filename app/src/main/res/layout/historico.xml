@@ -8,7 +8,6 @@
 
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/transaction_item_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,22 +15,30 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/valorpgt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Valor" />
-
-        <TextView
-            android:id="@+id/descricaoopgt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Descrição" />
-
-        <TextView
             android:id="@+id/metodopgt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tipo" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/descricaoopgt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descrição" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/valorpgt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="Valor" />
 
     </LinearLayout>
 
