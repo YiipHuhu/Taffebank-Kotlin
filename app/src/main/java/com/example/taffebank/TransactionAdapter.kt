@@ -14,7 +14,7 @@ class TransactionAdapter(
         val valorpgt: TextView = itemView.findViewById(R.id.valorpgt)
         val descricaoopgt: TextView = itemView.findViewById(R.id.descricaoopgt)
         val metodopgt: TextView = itemView.findViewById(R.id.metodopgt)
-        val itemLayout: View = itemView.findViewById(R.id.transaction_item_layout) // O layout da transação
+        val itemLayout: View = itemView.findViewById(R.id.transaction_item_layout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionViewHolder {
@@ -23,13 +23,12 @@ class TransactionAdapter(
     }
 
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
-        val transaction = listaTransaction[position]
-
+        // Inverte a ordem que exibe a tramsacao mostrando a mais recente primeiro
+        val transaction = listaTransaction[listaTransaction.size - 1 - position]
 
         holder.valorpgt.text = "R$ %.2f".format(transaction.valor)
         holder.descricaoopgt.text = transaction.descricao
         holder.metodopgt.text = transaction.type
-
 
         if (transaction.valor >= 0) {
             holder.itemLayout.setBackgroundColor(Color.parseColor("#79BD9A"))
