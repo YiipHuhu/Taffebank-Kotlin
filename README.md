@@ -1,1 +1,1 @@
-![kotlinTaffeBank](https://github.com/user-attachments/assets/d674ab75-5e8b-4861-9baf-220c9d1c3f88)
+![image](https://github.com/user-attachments/assets/8ad7c271-37fb-478c-97c6-ded7efd7a7ba)
