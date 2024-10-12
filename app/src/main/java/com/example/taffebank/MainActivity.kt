@@ -2,6 +2,8 @@
 package com.example.taffebank
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -30,10 +32,16 @@ class MainActivity : AppCompatActivity() {
         val btnDebito: Button = findViewById(R.id.btndebito)
         val recyclerView: RecyclerView = findViewById(R.id.recyclerViewAlunos)
 
-        transactionAdapter = TransactionAdapter(listaTransaction)
+        //para mostrar o skeleton
+        transactionAdapter = TransactionAdapter(listaTransaction, isLoading = true)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = transactionAdapter
 
+        // controle de tmepo do skeleton
+        Handler(Looper.getMainLooper()).postDelayed({
+            transactionAdapter.setLoading(false) // Desativa o estado de carregamento
+            transactionAdapter.notifyDataSetChanged() // Atualiza o RecyclerView
+        }, 3000000) // gambiarra eterna
 
         btnCredito.setOnClickListener {
             val valor = valorInsert.text.toString().toDoubleOrNull()
@@ -57,6 +65,12 @@ class MainActivity : AppCompatActivity() {
         listaTransaction.add(Transaction(valor, descricao, tipo))
         transactionAdapter.notifyDataSetChanged()
         atualizarSaldo()
+
+        // Após a primeira transação, removemos o skeleton (se ainda estiver ativo)
+        if (transactionAdapter.isLoading()) {  // Agora usando o método isLoading()
+            transactionAdapter.setLoading(false)
+            transactionAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun atualizarSaldo() {
