@@ -31,9 +31,9 @@ class TransactionAdapter(
         holder.metodopgt.text = transaction.type
 
         if (transaction.valor >= 0) {
-            holder.itemLayout.setBackgroundColor(Color.parseColor("#79BD9A"))
+            holder.itemLayout.setBackgroundColor(Color.parseColor("#33691E"))
         } else {
-            holder.itemLayout.setBackgroundColor(Color.parseColor("#BD798C"))
+            holder.itemLayout.setBackgroundColor(Color.parseColor("#B71C1C"))
         }
     }
 
